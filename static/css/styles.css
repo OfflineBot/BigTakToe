@@ -7,6 +7,10 @@
     --invis-status: 1px solid var(--bc-color);
     --main-invis: 2px solid var(--bc-color);
     --box-size: 60px;
+    --red-player: #f76f6f;
+    --blue-player: #777ff0;
+    --select-red-player: #a83d3d;
+    --select-blue-player: #424792;
 }
 
 * {
@@ -39,7 +43,7 @@ html, body {
 }
 
 .game-btn {
-    border: 1px solid white;
+    border: 3px solid white;
     padding: 10px;
     border-radius: 6px;
     width: 100px;
@@ -48,6 +52,11 @@ html, body {
     justify-content: center;
     cursor: pointer;
     margin: 20px;
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    -ms-user-select: none;
 }
 
 .game-field {
