@@ -2,8 +2,9 @@
 
 :root {
     --bc-color: #111111;
+    --frame-color: #535353;
     --border-status: 1px solid #363636;
-    --main-border: 2px solid #535353;
+    --main-border: 2px solid var(--frame-color);
     --invis-status: 1px solid var(--bc-color);
     --main-invis: 2px solid var(--bc-color);
     --box-size: 60px;
@@ -11,6 +12,7 @@
     --select-red-player: #645822;
     --blue-player: #8a4bf0;
     --select-blue-player: #3a1e66;
+    --select-frame: #ffffff;
 }
 
 * {
@@ -83,58 +85,31 @@ html, body {
 
 /* Game Field */
 #field1 {
-    border-top: var(--main-invis);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-invis);
+    border: var(--main-border);
 }
 #field2 {
-    border-top: var(--main-invis);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 #field3 {
-    border-top: var(--main-invis);
-    border-right: var(--main-invis); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 #field4 {
-    border-top: var(--main-border);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-invis);
+    border: var(--main-border);
 }
 #field5 {
-    border-top: var(--main-border);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 #field6 {
-    border-top: var(--main-border);
-    border-right: var(--main-invis); 
-    border-bottom: var(--main-border);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 #field7 {
-    border-top: var(--main-border);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-invis);
-    border-left: var(--main-invis);
+    border: var(--main-border);
 }
 #field8 {
-    border-top: var(--main-border);
-    border-right: var(--main-border); 
-    border-bottom: var(--main-invis);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 #field9 {
-    border-top: var(--main-border);
-    border-right: var(--main-invis); 
-    border-bottom: var(--main-invis);
-    border-left: var(--main-border);
+    border: var(--main-border);
 }
 
 /* Boxes */
