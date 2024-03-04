@@ -7,10 +7,10 @@
     --invis-status: 1px solid var(--bc-color);
     --main-invis: 2px solid var(--bc-color);
     --box-size: 60px;
-    --red-player: #f76f6f;
-    --blue-player: #777ff0;
-    --select-red-player: #a83d3d;
-    --select-blue-player: #424792;
+    --red-player: #f0d55d;
+    --select-red-player: #645822;
+    --blue-player: #8a4bf0;
+    --select-blue-player: #3a1e66;
 }
 
 * {
@@ -42,8 +42,12 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+#switch-player {
+    border-width: 3px;
+}
+
 .game-btn {
-    border: 3px solid white;
+    border: 1px solid white;
     padding: 10px;
     border-radius: 6px;
     width: 100px;
