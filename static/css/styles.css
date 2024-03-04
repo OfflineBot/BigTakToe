@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --bc-color: #111111;
+    --border-status: 1px solid #363636;
+    --main-border: 2px solid #535353;
+    --invis-status: 1px solid var(--bc-color);
+    --main-invis: 2px solid var(--bc-color);
+    --box-size: 60px;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+html, body {
+    background-color: var(--bc-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game-btn {
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 6px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.game-field {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+}
+
+.box {
+    width: var(--box-size);
+    height: var(--box-size);
+    padding: 1px;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Game Field */
+#field1 {
+    border-top: var(--main-invis);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-invis);
+}
+#field2 {
+    border-top: var(--main-invis);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-border);
+}
+#field3 {
+    border-top: var(--main-invis);
+    border-right: var(--main-invis); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-border);
+}
+#field4 {
+    border-top: var(--main-border);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-invis);
+}
+#field5 {
+    border-top: var(--main-border);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-border);
+}
+#field6 {
+    border-top: var(--main-border);
+    border-right: var(--main-invis); 
+    border-bottom: var(--main-border);
+    border-left: var(--main-border);
+}
+#field7 {
+    border-top: var(--main-border);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-invis);
+    border-left: var(--main-invis);
+}
+#field8 {
+    border-top: var(--main-border);
+    border-right: var(--main-border); 
+    border-bottom: var(--main-invis);
+    border-left: var(--main-border);
+}
+#field9 {
+    border-top: var(--main-border);
+    border-right: var(--main-invis); 
+    border-bottom: var(--main-invis);
+    border-left: var(--main-border);
+}
+
+/* Boxes */
+.loc-ul {
+    border: var(--border-status);
+    border-left: var(--invis-status);
+    border-top: var(--invis-status);
+}
+.loc-um {
+    border: var(--border-status);
+    border-top: var(--invis-status);
+}
+.loc-ur {
+    border: var(--border-status);
+    border-top: var(--invis-status);
+    border-right: var(--invis-status);
+}
+.loc-ml {
+    border: var(--border-status);
+    border-left: var(--invis-status);
+}
+.loc-mm {
+    border: var(--border-status);
+}
+.loc-mr {
+    border: var(--border-status);
+    border-right: var(--invis-status);
+}
+.loc-ll {
+    border: var(--border-status);
+    border-bottom: var(--invis-status);
+    border-left: var(--invis-status);
+}
+.loc-lm {
+    border: var(--border-status);
+    border-bottom: var(--invis-status);
+}
+.loc-lr {
+    border: var(--border-status);
+    border-bottom: var(--invis-status);
+    border-right: var(--invis-status);
+}
