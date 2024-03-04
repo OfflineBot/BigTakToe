@@ -66,6 +66,11 @@ document.getElementById('apply-btn').addEventListener("click", () => {
 
 function set_box(value) {
     let box_id = "box" + String(value);
+
+    if (game_field[box_id] != 0) {
+        return;
+    }
+
     if (last_box == "") {
         last_box = box_id;
     } else {
