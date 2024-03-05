@@ -92,5 +92,3 @@ let game_field = {
     "box99": 0,
 
 }
-
-window.game_field = game_field

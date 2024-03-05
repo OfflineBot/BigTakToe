@@ -4,7 +4,7 @@ const Gamer = {
     Red: 2,
 };
 
-let field = window.game_field;
+let field = game_field;
 let last_box = "";
 let last_frame = "";
 
@@ -28,8 +28,10 @@ function change_player() {
     active_player = active_player == Gamer.Blue ? Gamer.Red : Gamer.Blue; 
         if (active_player == Gamer.Blue) {
             switch_player.style = "border-color: var(--blue-player);";
+            set_cookie("player", "blue", 2);
         } else {
             switch_player.style = "border-color: var(--red-player);";
+            set_cookie("player", "red", 2);
         }
 }
 
@@ -48,10 +50,10 @@ document.getElementById('apply-btn').addEventListener("click", () => {
     if (last_box != "") {
         if (active_player == Gamer.Blue) {
             document.getElementById(last_box).style = "background-color: var(--blue-player);";
-            game_field[last_box] = 1;
+            field[last_box] = 1;
         } else {
             document.getElementById(last_box).style = "background-color: var(--red-player);";
-            game_field[last_box] = 2;
+            field[last_box] = 2;
         }
 
         let frame = "field" + last_box.slice(-1);
@@ -67,7 +69,7 @@ document.getElementById('apply-btn').addEventListener("click", () => {
 function set_box(value) {
     let box_id = "box" + String(value);
 
-    if (game_field[box_id] != 0) {
+    if (field[box_id] != 0) {
         return;
     }
 
@@ -90,4 +92,5 @@ document.getElementById('BoxSize').addEventListener('input', () => {
     let size = document.getElementById('BoxSize').value;
     console.log(size)
     document.documentElement.style.setProperty('--box-size', `${size}px`);
+    set_cookie("boxSize", size, 2);
 })
