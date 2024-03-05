@@ -8,7 +8,24 @@ let field = game_field;
 let last_box = "";
 let last_frame = "";
 
-function paint_game() {
+window.onload = () => {
+    let box_cookie = get_cookie("boxSize");
+    let active_player_cookie = get_cookie("activePlayer");
+    let game_cookie = get_cookie("game");
+    let active_frame_cookie = get_cookie("activeFrame");
+
+    document.documentElement.style.setProperty('--box-size', `${box_cookie}px`);
+    document.getElementById('BoxSize').value = box;
+
+    if (active_player_cookie != active_player) {
+        change_player();
+    }
+
+    field = game_cookie
+    paint_game(active_frame_cookie);
+}
+
+function paint_game(frame_on) {
 
 }
 
