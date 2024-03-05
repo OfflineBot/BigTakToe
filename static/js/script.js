@@ -85,3 +85,9 @@ function set_box(value) {
     }
 }
 
+
+document.getElementById('BoxSize').addEventListener('input', () => {
+    let size = document.getElementById('BoxSize').value;
+    console.log(size)
+    document.documentElement.style.setProperty('--box-size', `${size}px`);
+})

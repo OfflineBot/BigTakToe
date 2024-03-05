@@ -30,6 +30,7 @@ html, body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 #main {
@@ -46,6 +47,26 @@ html, body {
 
 #switch-player {
     border-width: 3px;
+}
+
+#settings {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+#BoxSize {
+    width: 60px;
+    height: 20px;
+    margin-left: 10px;
+    background-color: var(--bc-color);
+    color: white;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 .game-btn {
