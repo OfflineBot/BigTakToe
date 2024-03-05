@@ -21,9 +21,10 @@ window.onload = () => {
         paint_game(active_frame_cookie);
         set_cookie("activeFrame", active_frame_cookie, 2);
     }
-
-    document.documentElement.style.setProperty('--box-size', `${box_cookie}px`);
-    document.getElementById('BoxSize').value = box_cookie;
+    if (box_cookie == "" || box_cookie == undefined || box_cookie == null) {
+        document.documentElement.style.setProperty('--box-size', `${box_cookie}px`);
+        document.getElementById('BoxSize').value = box_cookie;
+    }
 
     if (active_player_cookie != active_player) {
         change_player();
