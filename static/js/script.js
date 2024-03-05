@@ -9,24 +9,49 @@ let last_box = "";
 let last_frame = "";
 
 window.onload = () => {
-    let box_cookie = get_cookie("boxSize");
+    let box_cookie = get_cookie("BoxSize");
     let active_player_cookie = get_cookie("activePlayer");
-    let game_cookie = get_cookie("game");
+    let game_cookie = get_dict_cookie("game");
     let active_frame_cookie = get_cookie("activeFrame");
 
+    if (game_cookie == undefined) {
+        field = game_field;
+    } else {
+        field = game_cookie
+        paint_game(active_frame_cookie);
+        set_cookie("activeFrame", active_frame_cookie, 2);
+    }
+
     document.documentElement.style.setProperty('--box-size', `${box_cookie}px`);
-    document.getElementById('BoxSize').value = box;
+    document.getElementById('BoxSize').value = box_cookie;
 
     if (active_player_cookie != active_player) {
         change_player();
     }
 
-    field = game_cookie
-    paint_game(active_frame_cookie);
 }
 
 function paint_game(frame_on) {
-
+    if (frame_on == "delete") {
+        field = game_field
+    }
+    for (let key in field) {
+        let value = field[key];
+        if (value != 0) {
+            value == 1 ? document.getElementById(key).style = "background-color: var(--blue-player);" : document.getElementById(key).style = "background-color: var(--red-player);";
+        } else {
+            document.getElementById(key).style = "background-color: var(--bc-color);";
+        }
+        deselect();
+        if (frame_on != "delete") {
+            try {
+                document.getElementById(frame_on).style = "border-color: var(--select-frame);";
+                last_frame = frame_on;
+            } catch {
+                console.log("Frame not found!");
+            }
+        }
+    }
 }
 
 function deselect() {
@@ -79,6 +104,7 @@ document.getElementById('apply-btn').addEventListener("click", () => {
 
         let frame = "field" + last_box.slice(-1);
         document.getElementById(frame).style = "border-color: var(--select-frame);";
+        set_dict_cookie("game", field, 2);
         set_cookie("activeFrame", frame, 2);
         
     }
@@ -89,7 +115,6 @@ document.getElementById('apply-btn').addEventListener("click", () => {
 
 function set_box(value) {
     let box_id = "box" + String(value);
-
     if (field[box_id] != 0) {
         return;
     }
@@ -111,30 +136,33 @@ function set_box(value) {
 
 document.getElementById('BoxSize').addEventListener('input', () => {
     let size = document.getElementById('BoxSize').value;
-    console.log(size)
     document.documentElement.style.setProperty('--box-size', `${size}px`);
-    set_cookie("boxSize", size, 2);
+    set_cookie("BoxSize", size, 2);
 });
 
+/*
 document.getElementById('load-last').addEventListener("click", () => {
     let player = get_cookie("player");
-    let new_field = get_cookie("game");
+    let new_field = get_dict_cookie("game");
     let highlight = get_cookie("activeFrame");
     active_player = player;
     field = new_field;
     last_frame = highlight;
     console.log("todo! load last");
-});
-
+}); */
+/*
 document.getElementById('save', () => {
-    console.log("todo! save");
-    set_cookie("game", field, 2);
+    let size = document.getElementById('BoxSize').value;
+    set_dict_cookie("game", field, 2);
     set_cookie("activePlayer", active_player, 2);
-})
+    set_cookie("activeFrame", field + last_box.slice(-1), 2);
+    set_cookie("BoxSize", size, 2);
+});
+*/
 
-document.getElementById('new-game', () => {
-    console.log("todo! new game");
+document.getElementById("new-game").addEventListener('click', () => {
     delete_cookie("activePlayer");
     delete_cookie("game");
     delete_cookie("activeFrame");
+    paint_game("delete");
 })
