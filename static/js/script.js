@@ -8,6 +8,10 @@ let field = game_field;
 let last_box = "";
 let last_frame = "";
 
+function paint_game() {
+
+}
+
 function deselect() {
     document.getElementById("field1").style = "border-color: var(--frame-color);";
     document.getElementById("field2").style = "border-color: var(--frame-color);";
@@ -18,6 +22,7 @@ function deselect() {
     document.getElementById("field7").style = "border-color: var(--frame-color);";
     document.getElementById("field8").style = "border-color: var(--frame-color);";
     document.getElementById("field9").style = "border-color: var(--frame-color);";
+    set_cookie("activeFrame", "none", 2);
 }
 
 // top color btn and active player
@@ -28,11 +33,10 @@ function change_player() {
     active_player = active_player == Gamer.Blue ? Gamer.Red : Gamer.Blue; 
         if (active_player == Gamer.Blue) {
             switch_player.style = "border-color: var(--blue-player);";
-            set_cookie("player", "blue", 2);
         } else {
             switch_player.style = "border-color: var(--red-player);";
-            set_cookie("player", "red", 2);
         }
+    set_cookie("activePlayer", active_player, 2);
 }
 
 switch_player.style = "border-color: var(--blue-player);";
@@ -57,8 +61,8 @@ document.getElementById('apply-btn').addEventListener("click", () => {
         }
 
         let frame = "field" + last_box.slice(-1);
-        console.log(frame)
         document.getElementById(frame).style = "border-color: var(--select-frame);";
+        set_cookie("activeFrame", frame, 2);
         
     }
     last_box = "";
@@ -93,4 +97,27 @@ document.getElementById('BoxSize').addEventListener('input', () => {
     console.log(size)
     document.documentElement.style.setProperty('--box-size', `${size}px`);
     set_cookie("boxSize", size, 2);
+});
+
+document.getElementById('load-last').addEventListener("click", () => {
+    let player = get_cookie("player");
+    let new_field = get_cookie("game");
+    let highlight = get_cookie("activeFrame");
+    active_player = player;
+    field = new_field;
+    last_frame = highlight;
+    console.log("todo! load last");
+});
+
+document.getElementById('save', () => {
+    console.log("todo! save");
+    set_cookie("game", field, 2);
+    set_cookie("activePlayer", active_player, 2);
+})
+
+document.getElementById('new-game', () => {
+    console.log("todo! new game");
+    delete_cookie("activePlayer");
+    delete_cookie("game");
+    delete_cookie("activeFrame");
 })
