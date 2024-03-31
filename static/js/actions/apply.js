@@ -11,7 +11,10 @@ function apply() {
     // check if won
     if (has_winner(placed_frame) == 0) {
         if (win_field(placed_frame)) {
-            gm_state["field"+String(placed_frame)]["won"] = player;
+            let field = "field"+String(placed_frame);
+            console.log(field);
+            gm_state[field]["won"] = player;
+            win_game();
         }
     }
 
@@ -23,4 +26,5 @@ function apply() {
     change_player();
     paint_all();
     last_box = -1;
+    set_all_cookies();
 }

@@ -38,12 +38,13 @@ let new_game = document.getElementById("new-game");
 // box_size (int) sizes of grid
 
 function create_empty_field() {
-    set_cookie("save_file", "true", 2);
+    delete_all_cookies();
     gm_field = game_field;
     gm_state = game_state; 
     atv_player = Gamer.Blue;
     atv_frame = -1;
     last_box = -1;
+    set_all_cookies();
 }
 
 window.onload = () => {
@@ -51,17 +52,7 @@ window.onload = () => {
         create_empty_field();
         paint_all();
     } else {
-        gm_fd = get_cookie("gm_field");
-        gm_field = gm_fd == null ? game_field : gm_fd;
-
-        gm_st = get_cookie("gm_state");
-        gm_state = gm_st == null ? game_state : gm_st;
-
-        atv_pr = get_cookie("atv_player");
-        atv_player = atv_pr == null ? Gamer.Blue : atv_pr;
-
-        atv_fm = get_cookie("atv_frame");
-        atv_frame = atv_fm == null ? atv_frame : atv_fm;
+        load_all_cookies() 
         paint_all();
     }
 }
